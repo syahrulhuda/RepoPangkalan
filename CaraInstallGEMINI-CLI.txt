@@ -1,0 +1,235 @@
+Tentu saja. Berikut adalah ekstraksi lengkap dari teks di dalam file .docx Anda, yang sudah diubah ke format Markdown (.md).
+
+Saya juga sudah menyisipkan placeholder untuk gambar-gambar Anda dengan format ![Deskripsi Gambar](assets/nama-file.png). Anda hanya perlu menyimpan gambar-gambar Anda di dalam folder assets dengan nama file yang sesuai, dan gambar tersebut akan otomatis muncul.
+
+Anda bisa langsung menyalin semua teks di bawah ini dan menyimpannya sebagai file PANDUAN_INSTALASI.md.
+
+PANDUAN INSTALASI LENGKAP GEMINI CLI DI WINDOWS: DARI NOL HINGGA MASTER 
+
+DISCLAIMER! 
+
+Pastikan Anda memiliki prasyarat berikut:
+
+Komputer atau Laptop dengan sistem operasi Windows. 
+
+Koneksi Internet. 
+
+Akun Google (akun Gmail Anda sudah cukup). 
+
+Sudah terinstall python. 
+
+Bagian 1: Mempersiapkan "Kunci" Rahasia Anda (API Key) 
+
+Buka browser Anda (Google Chrome, Firefox, dll). 
+
+
+Kunjungi situs Google AI Studio 
+
+Login menggunakan akun Google Anda jika diminta. 
+
+Setelah masuk, cari dan klik tombol 
+
+"Get API key" di sisi kiri halaman. 
+
+Sebuah jendela akan muncul. Klik tombol biru bertuliskan 
+
+"Create API key in new project". 
+
+Cling! Sebuah kode rahasia yang panjang akan muncul. Ini adalah kunci Anda. 
+
+
+SANGAT PENTING: Klik ikon "copy" (gambar dua lembar kertas) di sebelah kanan kode tersebut. 
+
+Buka aplikasi 
+
+Notepad di komputer Anda, lalu tempel (paste) kunci tersebut di sana. 
+
+Simpan dulu Notepad ini, jangan ditutup. Kita akan membutuhkannya nanti. 
+
+Bagian 2: Mempersiapkan "Rumah" untuk Remote Control Kita 
+
+Buka Terminal PowerShell. Caranya: Tekan tombol 
+
+Windows di keyboard Anda, ketik PowerShell, lalu klik aplikasi "Windows PowerShell" yang muncul. 
+
+Kita perlu tahu nama folder pengguna Anda. Di jendela PowerShell yang baru terbuka, ketik perintah 
+
+whoami ini lalu tekan Enter. 
+
+Outputnya akan seperti namakomputer\namaanda. 
+
+namaanda itulah username Anda. 
+
+Sekarang, buat folder "rumahnya" dengan mengetik perintah di bawah ini. Ganti 
+
+NAMA_ANDA dengan username Anda yang sebenarnya. 
+
+Terakhir, mari kita masuk ke "rumah" baru tersebut. Ketik perintah 
+
+cd (artinya change directory) di bawah ini (ingat, ganti NAMA_ANDA). 
+
+Tekan Enter. Sekarang kita siap untuk mulai merakit. 
+
+Bagian 3: Merakit Komponen Inti Remote (Menulis Kode Python) 
+
+Di jendela PowerShell (pastikan Anda masih di dalam folder 
+
+scripts), ketik perintah ini untuk membuat file kosong: New-Item gemini.py 
+
+Tekan Enter. Sebuah file bernama 
+
+gemini.py kini telah dibuat di dalam folder scripts Anda. 
+
+Buka File Explorer, navigasi ke folder scripts Anda (C:\Users\NAMA_ANDA\scripts). Anda akan melihat file 
+
+gemini.py di sana. 
+
+Klik kanan pada file 
+
+gemini.py, pilih Open with -> Notepad (atau editor kode lain seperti Visual Studio Code (VSC) jika punya). 
+
+Salin 
+
+semua kode di bawah ini, lalu tempel ke dalam file Notepad/VSC yang terbuka. 
+
+Python
+
+# Ini adalah "Otak" dari Remote Control kita [cite: 30]
+import google.generativeai as genai [cite: 31]
+import os [cite: 32]
+import sys [cite: 33]
+
+def main(): [cite: 34]
+    # Langkah 1: Mencari Kunci Rahasia [cite: 35]
+    try: [cite: 36]
+        api_key = os.environ["GOOGLE_API_KEY"] [cite: 37]
+        genai.configure(api_key=api_key) [cite: 38]
+    except KeyError: [cite: 39]
+        print("KESALAHAN: 'Kunci' Rahasia (GOOGLE_API_KEY) tidak ditemukan di sistem Anda.") [cite: 40]
+        print("Mohon pastikan Anda sudah mengikuti Bagian 4 dari panduan.") [cite: 41]
+        sys.exit(1) [cite: 42]
+
+    # Langkah 2: Menginisialisasi Model AI [cite: 43]
+    model = genai.GenerativeModel('gemini-1.5-flash') [cite: 44]
+
+    # Langkah 3: Mendengarkan Perintah Anda [cite: 45]
+    prompt = " ".join(sys.argv[1:]) [cite: 46]
+    if not prompt: [cite: 47]
+        if not sys.stdin.isatty(): [cite: 48]
+            prompt = sys.stdin.read().strip() [cite: 49]
+        else: [cite: 50]
+            print("Cara pakai: gemini 'tulis pertanyaan Anda di sini'") [cite: 51]
+            sys.exit(1) [cite: 52]
+
+    # Langkah 4: Mengirim Perintah ke Otak Raksasa dan Menampilkan Jawaban [cite: 53]
+    try: [cite: 54]
+        response = model.generate_content(prompt, stream=True) [cite: 55]
+        for chunk in response: [cite: 56]
+            print(chunk.text, end="", flush=True) [cite: 57]
+        print() # Memberi baris baru di akhir [cite: 58]
+    except Exception as e: [cite: 59]
+        print(f"\nOops, terjadi kesalahan saat menghubungi Google: {e}") [cite: 60]
+
+if __name__ == "__main__": [cite: 61]
+    main() [cite: 62]
+Klik File -> Save di Notepad, lalu tutup. Komponen inti remote kita sudah jadi! 
+
+Bagian 4: Mengatur Kunci Akses di Sistem (Environment Variable API Key) 
+
+Tekan tombol 
+
+Windows, ketik env, dan pilih "Edit the system environment variables". 
+
+Klik tombol 
+
+"Environment Variables...". 
+
+Fokus pada kotak bagian atas ("User variables for NAMA_ANDA"). Klik tombol 
+
+New.... 
+
+Akan muncul dua kolom: 
+
+
+Variable name: Ketik GOOGLE_API_KEY (harus persis seperti ini). 
+
+
+Variable value: Buka Notepad dari Bagian 1 tadi, salin kunci rahasia Anda, dan tempel di sini. 
+
+Klik 
+
+OK. 
+
+Sekarang Anda kembali ke jendela sebelumnya. Klik 
+
+OK lagi. 
+
+Dan klik OK sekali lagi di jendela terakhir. Kunci Anda sekarang sudah aman tersimpan. 
+
+Bagian 5: Mendaftarkan Lokasi Remote ke Sistem (Mengatur PATH) 
+
+Ulangi 
+
+Langkah 1 & 2 dari Bagian 4 untuk membuka jendela "Environment Variables". 
+
+Di kotak atas ("User variables"), cari dan klik variabel bernama 
+
+Path, lalu klik tombol "Edit...". 
+
+Klik tombol "New". Sebuah baris kosong akan muncul. 
+
+Ketik path lengkap ke folder scripts Anda. (Contoh: C:\Users\NAMA_ANDA\scripts. Ganti NAMA_ANDA dengan username Anda). 
+
+Klik 
+
+OK, OK, dan OK lagi untuk menyimpan dan menutup semua jendela. 
+
+Bagian 6: Membuat "Tombol Ajaib" di Remote (File .bat) 
+
+Buka 
+
+File Explorer lagi dan masuk ke folder scripts Anda. 
+
+Klik kanan di area kosong, pilih 
+
+New > Text Document. 
+
+Beri nama file tersebut gemini.bat. Pastikan Anda menghapus 
+
+.txt di akhir. 
+
+Windows mungkin akan bertanya "Are you sure you want to change it?", pilih 
+
+Yes. 
+
+Klik kanan pada file 
+
+gemini.bat yang baru, pilih Edit (atau Open with > Notepad). 
+
+Salin dan tempel satu baris kode di bawah ini ke dalamnya. 
+
+INGAT GANTI NAMA_ANDA! 
+
+Code snippet
+
+@python "C:\Users\NAMA_ANDA\scripts\gemini.py" %*
+Klik File -> Save dan tutup Notepad. Tombol ajaib Anda sudah siap! 
+
+Bagian 7: Tes Terakhir dan Kelulusan! 
+
+
+LANGKAH PALING KRUSIAL DARI SEMUANYA: TUTUP SEMUA JENDELA POWERSHELL YANG SEDANG TERBUKA, LALU BUKA SATU JENDELA POWERSHELL YANG BARU. 
+
+Sistem perlu di-restart (dalam hal ini, terminalnya) untuk membaca semua pengaturan baru yang sudah kita buat. 
+
+Di jendela PowerShell yang baru dan segar, ketik perintah pertama Anda. 
+
+Mari kita tanya sesuatu yang mudah: 
+
+gemini apa saja keunikan kota Malang? 
+
+Tekan 
+
+Enter. 
+
+Jika semuanya berjalan lancar, Anda akan melihat jawaban dari Gemini muncul langsung di terminal Anda. 
