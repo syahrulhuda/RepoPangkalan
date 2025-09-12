@@ -1,11 +1,3 @@
-Tentu saja. Berikut adalah ekstraksi lengkap dari teks di dalam file .docx Anda, yang sudah diubah ke format Markdown (.md).
-
-Saya juga sudah menyisipkan placeholder untuk gambar-gambar Anda dengan format ![Deskripsi Gambar](assets/nama-file.png). Anda hanya perlu menyimpan gambar-gambar Anda di dalam folder assets dengan nama file yang sesuai, dan gambar tersebut akan otomatis muncul.
-
-Anda bisa langsung menyalin semua teks di bawah ini dan menyimpannya sebagai file PANDUAN_INSTALASI.md.
-
-PANDUAN INSTALASI LENGKAP GEMINI CLI DI WINDOWS: DARI NOL HINGGA MASTER 
-
 DISCLAIMER! 
 
 Pastikan Anda memiliki prasyarat berikut:
