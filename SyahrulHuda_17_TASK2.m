@@ -12,13 +12,13 @@ phi = 0;
 x = A*sin((2*pi*f*t)+phi);
 xs = A*sin((2*pi*f*ts)+phi);
 
-subplot(3,1,1), plot(t, x, 'r');
+subplot(3,1,1), plot(t, x, 'r'); grid on;
 xlabel('Time (t)'); ylabel('Amplitude (A)');
 title('ANALOG');
-subplot(3,1,2), stem((0:Fs), xs, 'b');
-xlabel('Sampling Points'); ylabel('Amplitude (A)');
+subplot(3,1,2), stem((0:Fs), xs, 'b'); grid on;
+xlabel('Sampling Points (SP)'); ylabel('Amplitude (A)');
 title('SAMPLED');
-subplot(3,1,3), plot(t, x, 'r'); hold on;
+subplot(3,1,3), plot(t, x, 'r'); grid on; hold on;
 stem(ts, xs, 'b');
 xlabel('Time (t)'); ylabel('Amplitude (A)');
 title('COMBINED');
