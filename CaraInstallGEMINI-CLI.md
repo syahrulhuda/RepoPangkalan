@@ -17,17 +17,21 @@ B.  Bagian 1: Mempersiapkan \"Kunci\" Rahasia Anda (API Key)
 1.  Buka browser Anda (Google Chrome, Firefox, dll).
 
 2.  Kunjungi situs Google AI Studio: <https://aistudio.google.com/>
+![Tampilan Awal Google AI Studio](assets/image1.png)
 
 3.  Login menggunakan akun Google Anda jika diminta.
 
 4.  Setelah masuk, cari dan klik tombol **\"Get API key\"** di sisi kiri
     halaman.
+![Tombol Get API Key](assets/image2.png)
 
 5.  Sebuah jendela akan muncul. Klik tombol biru bertuliskan **\"Create
     API key in new project\"**.
+![Halaman API Keys](assets/image3.png)
 
 6.  *Cling!* Sebuah kode rahasia yang panjang akan muncul. Ini adalah
     kunci Anda.
+![Jendela API Key Generated](assets/image4.png)
 
 7.  **SANGAT PENTING:** Klik ikon \"copy\" (gambar dua lembar kertas) di
     sebelah kanan kode tersebut. Buka aplikasi **Notepad** di komputer
@@ -48,10 +52,12 @@ C.  Bagian 2: Mempersiapkan \"Rumah\" untuk Remote Control Kita
 
 3.  Sekarang, buat folder \"rumahnya\" dengan mengetik perintah di bawah
     ini. Ganti NAMA_ANDA dengan username Anda yang sebenarnya.
+![Membuat direktori scripts](assets/image5.png)
 
 4.  Terakhir, mari kita masuk ke \"rumah\" baru tersebut. Ketik perintah
     cd (artinya *change directory*) di bawah ini (ingat, ganti
     NAMA_ANDA): mkdir C:\Users\NAMA_ANDA\scripts
+![Pindah ke direktori scripts](assets/image6.png)
 
 5.  Tekan **Enter**. Sekarang kita siap untuk mulai merakit.
 
@@ -60,13 +66,16 @@ D.  Bagian 3: Merakit Komponen Inti Remote (Menulis Kode Python)
 
 1.  Di jendela PowerShell (pastikan Anda masih di dalam folder scripts),
     ketik perintah ini untuk membuat file kosong: New-Item gemini.py. Lalu, tekan **Enter**. Sebuah file bernama gemini.py kini telah dibuat didalam folder scripts Anda.
+![Membuat file gemini.py](assets/image7.png)
 
 2.  Buka **File Explorer**, navigasi ke folder scripts Anda
     (C:\Users\NAMA_ANDA\scripts). Anda akan melihat file gemini.py di
     sana.
+![File Explorer menampilkan gemini.py dan gemini.bat](assets/image8.png)
 
 3.  Klik kanan pada file gemini.py, pilih Open with -\> Notepad (atau
     editor kode lain seperti Visual Studio Code (VSC) jika punya).
+![Kode Python di dalam VSC](assets/image9.png)
 
 4.  Salin **semua kode** di bawah ini, lalu tempel ke dalam file
     Notepad/VSC yang terbuka.
@@ -153,6 +162,7 @@ E.  Bagian 4: Mengatur Kunci Akses di Sistem (Environment Variable API
 
 3.  Fokus pada **kotak bagian atas** (\"User variables for NAMA_ANDA\").
     Klik tombol **New\...**.
+![Jendela New User Variable](assets/image10.png)
 
 4.  Akan muncul dua kolom:
 
@@ -194,12 +204,14 @@ G.  Bagian 6: Membuat \"Tombol Ajaib\" di Remote (File .bat)
 3.  Beri nama file tersebut **gemini.bat**. Pastikan Anda menghapus .txt
     di akhir. Windows mungkin akan bertanya \"Are you sure you want to
     change it?\", pilih **Yes**.
+![File Explorer menampilkan gemini.bat dan gemini.py lagi](assets/image11.png)
 
 4.  Klik kanan pada file gemini.bat yang baru, pilih Edit (atau Open
     with \> Notepad).
 
 5.  Salin dan tempel **satu baris** kode di bawah ini ke dalamnya.
     **INGAT GANTI NAMA_ANDA!**
+![Kode di dalam file gemini.bat](assets/image12.png)
 
 > \>\> @python \"C:\Users\NAMA_ANDA\scripts\gemini.py\" %\*
 
@@ -218,6 +230,7 @@ H.  Bagian 7: Tes Terakhir dan Kelulusan!
     kota Malang?\]
 
 3.  Tekan **Enter**.
+![Hasil akhir di PowerShell](assets/image13.png)
 
 4.  Jika semuanya berjalan lancar, Anda akan melihat jawaban dari Gemini
     muncul langsung di terminal Anda.
