@@ -53,6 +53,16 @@ Urutan ini **sangat penting** untuk menghindari masalah koneksi.
 
 1.  **Jalankan Broker MQTT:** (Di terminal 1)
     Biarkan terminal ini berjalan.
+
+    > **Catatan Penting:** Jika terdapat error saat menjalankan mosquitto broker, tambahkan konfigurasi :Buat file misal : contiki.conf di lokasi /etc/mosquitto/conf.d/ dengan menambahkan isi file sebagai berikut:
+    > ```ini
+    > listener 1883
+    > allow_anonymous true
+    > log_type all
+    > connection_messages true
+    > log_timestamp true
+    > ```
+
     ```bash
     # Hentikan service default untuk mencegah konflik
     sudo systemctl stop mosquitto
